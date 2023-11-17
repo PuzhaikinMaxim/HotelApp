@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Hotel App</string>
+    <string name="rating">%d %s</string>
+    <string name="about_hotel_header">Об отеле</string>
+    <string name="minimal_price">от %s ₽</string>
+    <string name="to_rooms_selection">К выбору номера</string>
+</resources>
