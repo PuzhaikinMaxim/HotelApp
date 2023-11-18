@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:foreground="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_image_slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:minHeight="250dp"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <RadioGroup

@@ -2,15 +2,22 @@ package com.mxpj.hotelapp.presentation
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageView
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.constraintlayout.helper.widget.Carousel
 import androidx.core.view.children
 import androidx.core.view.marginRight
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexboxLayout.LayoutParams
 import com.mxpj.hotelapp.R
 import com.mxpj.hotelapp.databinding.FragmentHotelBinding
+import com.mxpj.hotelapp.databinding.ImageSliderContainerBinding
+import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
 class HotelFragment: BaseFragment<FragmentHotelBinding>(FragmentHotelBinding::inflate) {
@@ -60,8 +67,28 @@ class HotelFragment: BaseFragment<FragmentHotelBinding>(FragmentHotelBinding::in
     }
 
     private fun setupImageSlider(imageUrls: List<String>) {
+        setupSliderButtons(imageUrls)
+        Picasso.get().load(imageUrls[0]).into(binding.isHotelImages.backgroundImage)
         val adapter = ImageSliderAdapter()
         adapter.imageUrlList = imageUrls
         binding.isHotelImages.vpImageSlider.adapter = adapter
+        binding.isHotelImages.vpImageSlider.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    val radioButton = binding.isHotelImages.rgImages.getChildAt(position) as RadioButton
+                    radioButton.isChecked = true
+                }
+            })
+    }
+
+    private fun setupSliderButtons(imageUrls: List<String>) {
+        binding.isHotelImages.rgImages.removeAllViews()
+        for(image in imageUrls){
+            LayoutInflater.from(requireActivity()).inflate(
+                R.layout.image_slider_radio_button,
+                binding.isHotelImages.rgImages
+            )
+        }
     }
 }
