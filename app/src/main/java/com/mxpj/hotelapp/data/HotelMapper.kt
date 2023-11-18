@@ -20,8 +20,4 @@ class HotelMapper @Inject constructor(){
             hotelDto.aboutTheHotel.peculiarities
         )
     }
-
-    private fun parseMinimalPrice(minimalPrice: Int): String {
-        return minimalPrice.toString().chunked(3).joinToString(" ")
-    }
 }

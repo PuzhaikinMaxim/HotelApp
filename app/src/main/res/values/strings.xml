@@ -4,4 +4,6 @@
     <string name="about_hotel_header">Об отеле</string>
     <string name="minimal_price">от %s ₽</string>
     <string name="to_rooms_selection">К выбору номера</string>
+    <string name="room_details">Подробнее о номере</string>
+    <string name="select_room">Выбрать номер</string>
 </resources>

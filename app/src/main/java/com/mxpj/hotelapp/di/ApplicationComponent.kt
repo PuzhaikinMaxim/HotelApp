@@ -2,8 +2,7 @@ package com.mxpj.hotelapp.di
 
 import android.app.Application
 import com.mxpj.hotelapp.presentation.HotelFragment
-import com.puj.testtaskonlineshop.di.ApplicationScope
-import com.puj.testtaskonlineshop.di.ViewModelModule
+import com.mxpj.hotelapp.presentation.RoomsFragment
 import dagger.BindsInstance
 import dagger.Component
 
@@ -15,6 +14,8 @@ import dagger.Component
 interface ApplicationComponent {
 
     fun inject(hotelFragment: HotelFragment)
+
+    fun inject (roomsFragment: RoomsFragment)
 
     @Component.Factory
     interface Factory {

@@ -12,6 +12,7 @@ import androidx.constraintlayout.helper.widget.Carousel
 import androidx.core.view.children
 import androidx.core.view.marginRight
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexboxLayout.LayoutParams
 import com.mxpj.hotelapp.R
@@ -36,6 +37,7 @@ class HotelFragment: BaseFragment<FragmentHotelBinding>(FragmentHotelBinding::in
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupHotelData()
+        setupToRoomsSelection()
     }
 
     private fun setupHotelData() {
@@ -47,7 +49,7 @@ class HotelFragment: BaseFragment<FragmentHotelBinding>(FragmentHotelBinding::in
             binding.tvPriceForIt.text = it.price_for_it
             binding.tvDescription.text = it.description
             setupPeculiarities(it.peculiarities)
-            setupImageSlider(it.imageUrls)
+            setupImageSlider(it.imageUrls, binding.isHotelImages, requireActivity())
         }
     }
 
@@ -61,34 +63,20 @@ class HotelFragment: BaseFragment<FragmentHotelBinding>(FragmentHotelBinding::in
             textView.text = it
             binding.fPeculiarities.addView(textView)
             val params = LayoutParams(textView.layoutParams)
-            params.setMargins(0,10,10,0)
+            val marginInDp = 10f.getInDip(requireActivity())
+            params.setMargins(
+                0,
+                marginInDp,
+                marginInDp,
+                0
+            )
             textView.layoutParams = params
         }
     }
 
-    private fun setupImageSlider(imageUrls: List<String>) {
-        setupSliderButtons(imageUrls)
-        Picasso.get().load(imageUrls[0]).into(binding.isHotelImages.backgroundImage)
-        val adapter = ImageSliderAdapter()
-        adapter.imageUrlList = imageUrls
-        binding.isHotelImages.vpImageSlider.adapter = adapter
-        binding.isHotelImages.vpImageSlider.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    val radioButton = binding.isHotelImages.rgImages.getChildAt(position) as RadioButton
-                    radioButton.isChecked = true
-                }
-            })
-    }
-
-    private fun setupSliderButtons(imageUrls: List<String>) {
-        binding.isHotelImages.rgImages.removeAllViews()
-        for(image in imageUrls){
-            LayoutInflater.from(requireActivity()).inflate(
-                R.layout.image_slider_radio_button,
-                binding.isHotelImages.rgImages
-            )
+    private fun setupToRoomsSelection() {
+        binding.btnToRoomsSelection.setOnClickListener {
+            findNavController().navigate(R.id.action_hotelFragment_to_roomsFragment)
         }
     }
 }

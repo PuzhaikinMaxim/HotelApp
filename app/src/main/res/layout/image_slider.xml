@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cl_container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/background_image"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:foreground="@color/white"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/bc_slider_foreground"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        style="@style/RoundedImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
     <androidx.viewpager2.widget.ViewPager2

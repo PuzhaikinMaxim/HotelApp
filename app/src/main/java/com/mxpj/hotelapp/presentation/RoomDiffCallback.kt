@@ -2,10 +2,11 @@ package com.mxpj.hotelapp.presentation
 
 import androidx.recyclerview.widget.DiffUtil
 import com.mxpj.hotelapp.domain.Hotel
+import com.mxpj.hotelapp.domain.Room
 
-class HotelDiffCallback(
-    private val oldList: List<Hotel>,
-    private val newList: List<Hotel>
+class RoomDiffCallback(
+    private val oldList: List<Room>,
+    private val newList: List<Room>
 ): DiffUtil.Callback() {
 
     override fun getOldListSize(): Int {
