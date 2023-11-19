@@ -144,9 +144,12 @@
                 app:hintTextColor="#A9ABB7"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
-                <com.google.android.material.textfield.TextInputEditText
+                <com.mxpj.hotelapp.presentation.SuffixEditText
+                    android:id="@+id/et_phone"
                     style="@style/EditText"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:textColorHint="@drawable/edit_text_hint"
+                    android:digits="1234567890+-()* " />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -158,6 +161,7 @@
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
                     style="@style/EditText"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
