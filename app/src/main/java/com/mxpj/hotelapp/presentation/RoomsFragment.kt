@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.mxpj.hotelapp.R
 import com.mxpj.hotelapp.databinding.FragmentRoomsBinding
 import javax.inject.Inject
 
@@ -29,6 +31,9 @@ class RoomsFragment: BaseFragment<FragmentRoomsBinding>(FragmentRoomsBinding::in
         val adapter = RoomAdapter(requireActivity())
         viewModel.roomList.observe(requireActivity()){
             adapter.roomList = it
+        }
+        adapter.onSelectRoomCallback = {
+            findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
         }
         binding.rvRooms.adapter = adapter
     }

@@ -25,6 +25,8 @@ class RoomAdapter(
             field = value
         }
 
+    var onSelectRoomCallback: ((Room) -> Unit) = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemRoomBindingViewHolder {
         val binding = ItemRoomBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -41,6 +43,9 @@ class RoomAdapter(
             tvName.text = item.name
             tvPrice.text = item.price
             tvPricePer.text = item.pricePer
+            btnSelectRoom.setOnClickListener {
+                onSelectRoomCallback(item)
+            }
             setupPeculiarities(item.peculiarities, this)
         }
     }

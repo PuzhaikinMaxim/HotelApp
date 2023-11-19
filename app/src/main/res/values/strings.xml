@@ -6,4 +6,9 @@
     <string name="to_rooms_selection">К выбору номера</string>
     <string name="room_details">Подробнее о номере</string>
     <string name="select_room">Выбрать номер</string>
+    <string name="buyer_info_header">Информация о покупателе</string>
+    <string name="hint_phone">Номер телефона</string>
+    <string name="hint_email">Почта</string>
+    <string name="buyer_info_hint">Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту</string>
+    <string name="departure_title">Вылет из</string>
 </resources>

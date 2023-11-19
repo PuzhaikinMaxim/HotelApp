@@ -15,5 +15,13 @@
     <fragment
         android:id="@+id/roomsFragment"
         android:name="com.mxpj.hotelapp.presentation.RoomsFragment"
-        android:label="RoomsFragment" />
+        android:label="RoomsFragment" >
+        <action
+            android:id="@+id/action_roomsFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.mxpj.hotelapp.presentation.BookingFragment"
+        android:label="BookingFragment" />
 </navigation>
