@@ -25,6 +25,7 @@ class RoomsFragment: BaseFragment<FragmentRoomsBinding>(FragmentRoomsBinding::in
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRoomAdapter()
+        setupOnBackButtonClick()
     }
 
     private fun setupRoomAdapter() {
@@ -36,5 +37,11 @@ class RoomsFragment: BaseFragment<FragmentRoomsBinding>(FragmentRoomsBinding::in
             findNavController().navigate(R.id.action_roomsFragment_to_bookingFragment)
         }
         binding.rvRooms.adapter = adapter
+    }
+
+    private fun setupOnBackButtonClick() {
+        binding.ivBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 }

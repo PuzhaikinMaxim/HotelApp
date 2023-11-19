@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Hotel App</string>
     <string name="rating">%d %s</string>
     <string name="about_hotel_header">Об отеле</string>
@@ -11,4 +11,10 @@
     <string name="hint_email">Почта</string>
     <string name="buyer_info_hint">Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту</string>
     <string name="departure_title">Вылет из</string>
+    <string name="tourist_number">%s турист</string>
+    <string name="add_tourist">Добавить туриста</string>
+    <string name="make_payment">Оплатить %s ₽</string>
+    <string name="price">%s ₽</string>
+    <string name="tour_dates">%s - %s</string>
+    <string name="order_number">Подтверждение заказа №%d может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.</string>
 </resources>

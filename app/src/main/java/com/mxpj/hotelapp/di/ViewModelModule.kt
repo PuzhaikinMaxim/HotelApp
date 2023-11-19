@@ -1,6 +1,7 @@
 package com.mxpj.hotelapp.di
 
 import androidx.lifecycle.ViewModel
+import com.mxpj.hotelapp.presentation.BookingViewModel
 import com.mxpj.hotelapp.presentation.HotelViewModel
 import com.mxpj.hotelapp.presentation.RoomsViewModel
 import com.puj.testtaskonlineshop.di.ViewModelKey
@@ -20,4 +21,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(RoomsViewModel::class)
     fun roomsViewModel(viewModel: RoomsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BookingViewModel::class)
+    fun bookingViewModel(viewModel: BookingViewModel): ViewModel
 }

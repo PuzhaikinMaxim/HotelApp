@@ -11,7 +11,7 @@ class HotelMapper @Inject constructor(){
             hotelDto.id,
             hotelDto.name,
             hotelDto.address,
-            parseMinimalPrice(hotelDto.minimalPrice),
+            parsePrice(hotelDto.minimalPrice),
             hotelDto.priceForIt,
             hotelDto.rating,
             hotelDto.ratingName,

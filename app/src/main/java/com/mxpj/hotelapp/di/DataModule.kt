@@ -1,8 +1,10 @@
 package com.mxpj.hotelapp.di
 
+import com.mxpj.hotelapp.data.BookingRepositoryImpl
 import com.mxpj.hotelapp.data.HotelRepositoryImpl
 import com.mxpj.hotelapp.data.RoomRepositoryImpl
 import com.mxpj.hotelapp.data.network.*
+import com.mxpj.hotelapp.domain.BookingRepository
 import com.mxpj.hotelapp.domain.HotelRepository
 import com.mxpj.hotelapp.domain.RoomRepository
 import dagger.Binds
@@ -28,6 +30,14 @@ interface DataModule {
     @ApplicationScope
     fun bindRoomRepository(impl: RoomRepositoryImpl): RoomRepository
 
+    @Binds
+    @ApplicationScope
+    fun bindBookingRepository(impl: BookingRepositoryImpl): BookingRepository
+
+    @Binds
+    @ApplicationScope
+    fun bindBookingDataSource(impl: BookingRemoteDatasourceImpl): BookingRemoteDataSource
+
     companion object {
 
         @Provides
@@ -40,6 +50,12 @@ interface DataModule {
         @ApplicationScope
         fun provideRoomApiService(): RoomApiService {
             return ServiceFactory.create(RoomApiService::class.java)
+        }
+
+        @Provides
+        @ApplicationScope
+        fun provideBookingApiService(): BookingApiService {
+            return ServiceFactory.create(BookingApiService::class.java)
         }
     }
 }

@@ -14,7 +14,7 @@ class RoomMapper @Inject constructor() {
         return Room(
             roomDto.id,
             roomDto.name,
-            parseMinimalPrice(roomDto.price),
+            parsePrice(roomDto.price),
             roomDto.pricePer,
             roomDto.peculiarities,
             roomDto.imageUrls

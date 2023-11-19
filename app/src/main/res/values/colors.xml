@@ -9,4 +9,6 @@
     <color name="black_transparent">#38000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_gray">#F6F6F9</color>
+    <color name="error">#26EB5757</color>
+    <color name="edit_text_background">#F6F6F9</color>
 </resources>

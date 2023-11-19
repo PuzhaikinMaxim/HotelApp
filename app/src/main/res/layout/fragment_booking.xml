@@ -13,6 +13,12 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_back"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_gravity="center"
                 style="@style/ToolbarText"
@@ -66,7 +72,8 @@
                     android:text="@string/departure_title"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_departure"
-                    style="@style/TripInfo"/>
+                    style="@style/TripInfo"
+                    tools:text="Тест1"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.LinearLayoutCompat
                 style="@style/TripInfoContainer"
@@ -76,7 +83,8 @@
                     android:text="Страна, город"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_arrival_country"
-                    style="@style/TripInfo"/>
+                    style="@style/TripInfo"
+                    tools:text="Тест1"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.LinearLayoutCompat
                 style="@style/TripInfoContainer"
@@ -86,6 +94,7 @@
                     android:text="Даты"/>
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_tour_dates"
+
                     style="@style/TripInfo"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -172,6 +181,106 @@
                 android:fontFamily="@font/sf_pro_display_regular"
                 android:textColor="#828796"
                 android:layout_marginTop="10dp"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tourist_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_tourist"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="1"/>
+        <com.google.android.flexbox.FlexboxLayout
+            style="@style/Block"
+            android:layout_marginTop="10dp"
+            app:justifyContent="space_between">
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/BlockBigText"
+                android:text="@string/add_tourist"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bc_add_tourist"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/bc_add_tourist_button"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@drawable/ic_plus"
+                    android:tint="@color/white"
+                    android:translationZ="10dp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@id/bc_add_tourist"
+                    app:layout_constraintEnd_toEndOf="@id/bc_add_tourist"
+                    app:layout_constraintStart_toStartOf="@id/bc_add_tourist"
+                    app:layout_constraintTop_toTopOf="@id/bc_add_tourist" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            style="@style/Block"
+            android:layout_marginTop="10dp">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/TripInfoContainer">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TripPriceTitle"
+                    android:text="Тур"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_tour_price"
+                    style="@style/TripPrice"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/TripInfoContainer"
+                android:layout_marginTop="10dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TripPriceTitle"
+                    android:text="Топливный сбор"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_fuel_charge"
+                    style="@style/TripPrice"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/TripInfoContainer"
+                android:layout_marginTop="10dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TripPriceTitle"
+                    android:text="Сервисный сбор"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_service_charge"
+                    style="@style/TripPrice"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                style="@style/TripInfoContainer"
+                android:layout_marginTop="10dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TripPriceTitle"
+                    android:text="К оплате"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_total"
+                    android:textColor="#0D72FF"
+                    android:fontFamily="@font/sf_pro_display_semibold"
+                    style="@style/TripPrice"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_make_payment"
+                style="@style/BigButton"
+                android:text="@string/make_payment"
+                android:layout_width="match_parent"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>

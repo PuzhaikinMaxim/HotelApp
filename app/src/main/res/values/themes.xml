@@ -150,8 +150,20 @@
     <style name="TripInfoTitle" parent="Text">
         <item name="android:textColor">#828796</item>
         <item name="android:layout_weight">4</item>
+        <item name="android:layout_width">0dp</item>
     </style>
     <style name="TripInfo" parent="Text">
         <item name="android:layout_weight">6</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+    <style name="TripPriceTitle" parent="Text">
+        <item name="android:textColor">#828796</item>
+        <item name="android:layout_weight">6</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+    <style name="TripPrice" parent="Text">
+        <item name="android:layout_weight">4</item>
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:layout_width">0dp</item>
     </style>
 </resources>
