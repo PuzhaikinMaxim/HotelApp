@@ -186,9 +186,10 @@
             android:id="@+id/rv_tourist_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
             tools:listitem="@layout/item_tourist"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:itemCount="1"/>
+            tools:itemCount="2"/>
         <com.google.android.flexbox.FlexboxLayout
             style="@style/Block"
             android:layout_marginTop="10dp"

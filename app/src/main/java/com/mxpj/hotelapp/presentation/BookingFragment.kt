@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.LayoutAnimationController
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.mxpj.hotelapp.R
 import com.mxpj.hotelapp.databinding.FragmentBookingBinding
 import com.redmadrobot.inputmask.MaskedTextChangedListener
@@ -33,6 +37,7 @@ class BookingFragment: BaseFragment<FragmentBookingBinding>(FragmentBookingBindi
         setupEmailEditText()
         setupOnBackButtonClick()
         setupOnMakePaymentButtonClick()
+        setupTouristList()
     }
 
     private fun setupBookingData() {
@@ -59,7 +64,7 @@ class BookingFragment: BaseFragment<FragmentBookingBinding>(FragmentBookingBindi
         binding.etEmail.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if(hasFocus){
                 viewModel.resetEmailError()
-            }else{
+            } else{
                 viewModel.checkForEmailError(binding.etEmail.text.toString())
             }
         }
@@ -89,9 +94,37 @@ class BookingFragment: BaseFragment<FragmentBookingBinding>(FragmentBookingBindi
                     formattedValue: String
                 ) {
                     binding.etPhone.suffix = mask.substring(formattedValue.length)
+                    viewModel.setPhoneNumber(extractedValue)
                 }
             }
         )
+        setPhoneTextChangedListener()
+        setFocusChangedListener()
+        viewModel.phoneError.observe(requireActivity()){
+            val colorId = if(it) R.color.error else R.color.edit_text_background
+            binding.etPhone.setBackgroundColor(ContextCompat.getColor(requireActivity(), colorId))
+        }
+
+    }
+
+    private fun setPhoneTextChangedListener() {
+        binding.etPhone.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                viewModel.resetPhoneError()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+    }
+
+    private fun setFocusChangedListener() {
         binding.etPhone.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
             if(!hasFocus && (binding.etPhone.text?.length ?: 0) == 0){
                 binding.etPhone.suffix = ""
@@ -104,6 +137,29 @@ class BookingFragment: BaseFragment<FragmentBookingBinding>(FragmentBookingBindi
         }
     }
 
+    private fun setupTouristList() {
+        val adapter = TouristAdapter(requireActivity())
+        viewModel.tourists.observe(requireActivity()){
+            adapter.tourists = it
+        }
+        adapter.onShowButtonClick = {
+            viewModel.changeTouristCardVisibility(it)
+        }
+        adapter.onTouristDataChange = { id, touristData ->
+            viewModel.setTouristData(id, touristData)
+        }
+        adapter.onTextChange = { id, field ->
+            viewModel.resetFieldError(id, field)
+        }
+        val animator = binding.rvTouristList.itemAnimator as SimpleItemAnimator
+        animator.supportsChangeAnimations = false
+        binding.rvTouristList.adapter = adapter
+        binding.rvTouristList.setItemViewCacheSize(7)
+        binding.bcAddTourist.setOnClickListener {
+            viewModel.addTourist()
+        }
+    }
+
     private fun setupOnBackButtonClick() {
         binding.ivBack.setOnClickListener {
             requireActivity().onBackPressed()
@@ -112,7 +168,13 @@ class BookingFragment: BaseFragment<FragmentBookingBinding>(FragmentBookingBindi
 
     private fun setupOnMakePaymentButtonClick() {
         binding.btnMakePayment.setOnClickListener {
-            findNavController().navigate(R.id.action_bookingFragment_to_orderFragment)
+            viewModel.makePayment(binding.etEmail.text.toString())
+        }
+        viewModel.shouldCloseScreen.observe(requireActivity()){
+            if(it){
+                findNavController().navigate(R.id.action_bookingFragment_to_orderFragment)
+                viewModel.resetShouldCloseScreen()
+            }
         }
     }
 
