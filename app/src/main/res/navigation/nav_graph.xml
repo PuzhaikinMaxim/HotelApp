@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/hotelFragment"
-        android:name="com.mxpj.hotelapp.presentation.HotelFragment"
+        android:name="com.mxpj.hotelapp.presentation.hotel.HotelFragment"
         android:label="HotelFragment" >
         <action
             android:id="@+id/action_hotelFragment_to_roomsFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/roomsFragment"
-        android:name="com.mxpj.hotelapp.presentation.RoomsFragment"
+        android:name="com.mxpj.hotelapp.presentation.room.RoomsFragment"
         android:label="RoomsFragment" >
         <action
             android:id="@+id/action_roomsFragment_to_bookingFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookingFragment"
-        android:name="com.mxpj.hotelapp.presentation.BookingFragment"
+        android:name="com.mxpj.hotelapp.presentation.booking.BookingFragment"
         android:label="BookingFragment" >
         <action
             android:id="@+id/action_bookingFragment_to_orderFragment"

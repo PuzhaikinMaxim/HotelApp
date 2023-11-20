@@ -2,7 +2,6 @@ package com.mxpj.hotelapp.presentation
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.widget.RadioButton

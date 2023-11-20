@@ -1,9 +1,9 @@
 package com.mxpj.hotelapp.di
 
 import android.app.Application
-import com.mxpj.hotelapp.presentation.BookingFragment
-import com.mxpj.hotelapp.presentation.HotelFragment
-import com.mxpj.hotelapp.presentation.RoomsFragment
+import com.mxpj.hotelapp.presentation.booking.BookingFragment
+import com.mxpj.hotelapp.presentation.hotel.HotelFragment
+import com.mxpj.hotelapp.presentation.room.RoomsFragment
 import dagger.BindsInstance
 import dagger.Component
 

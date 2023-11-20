@@ -5,7 +5,6 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.mxpj.hotelapp.R
 import com.mxpj.hotelapp.databinding.FragmentOrderBinding
-import kotlin.random.Random
 
 class OrderFragment: BaseFragment<FragmentOrderBinding>(FragmentOrderBinding::inflate) {
 

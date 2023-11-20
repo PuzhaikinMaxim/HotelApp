@@ -1,4 +1,4 @@
-package com.puj.testtaskonlineshop.di
+package com.mxpj.hotelapp.di
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
